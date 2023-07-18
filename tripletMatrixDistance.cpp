@@ -89,13 +89,12 @@ float get_matrix_distance(MatrixXd rs, MatrixXd ps){
 }
 
 
-int main()
+int main(int argc, char **argv)
 {
-// make sure that the "matrix_outside.csv" file exhists
-    MatrixXd reference = openData("reference.csv");
- 	MatrixXd predicted = openData("predicted.csv");
- 
-    // cout <<"\n\n"<< matrix_test3<<"\n\n";
+    if (argc<2 || argc>3)
+    cout << "The command line must have 2 arguments, each being a valid path to a csv file.";
+    MatrixXd reference = openData(argv[1]);
+ 	MatrixXd predicted = openData(argv[2]);
 
 	cout << get_matrix_distance(reference, predicted);
 
